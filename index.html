@@ -1,186 +1,81 @@
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Arial", sans-serif;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nish Clothing</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-body {
-  background: #ffffff;
-  color: #111;
-  line-height: 1.6;
-}
+<body>
 
-/* NAVBAR */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 60px;
-  position: sticky;
-  top: 0;
-  background: white;
-  border-bottom: 1px solid #eee;
-  z-index: 1000;
-}
+  <!-- NAVBAR -->
+  <header>
+    <div class="logo">Nish Clothing</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-text">
+      <h1>Fashion That Defines You</h1>
+      <p>Premium style for everyday life</p>
+      <a href="#products" class="btn">Shop Now</a>
+    </div>
+  </section>
 
-nav a {
-  margin-left: 25px;
-  text-decoration: none;
-  color: #111;
-  font-size: 14px;
-  transition: 0.3s;
-}
+  <!-- PRODUCTS -->
+  <section id="products" class="products">
+    <h2>Our Collection</h2>
 
-nav a:hover {
-  color: #777;
-}
+    <div class="product-grid">
 
-/* HERO */
-.hero {
-  height: 90vh;
-  background: url("https://images.unsplash.com/photo-1520975916090-3105956dac38") center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  position: relative;
-}
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" />
+        <h3>Classic Tee</h3>
+        <p>₹799</p>
+      </div>
 
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0,0,0,0.4);
-}
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1520975958220-3105956dac38" />
+        <h3>Street Hoodie</h3>
+        <p>₹1499</p>
+      </div>
 
-.hero-text {
-  position: relative;
-  z-index: 2;
-}
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1520975869014-3105956dac38" />
+        <h3>Oversized Fit</h3>
+        <p>₹999</p>
+      </div>
 
-.hero h1 {
-  font-size: 60px;
-  font-weight: 300;
-  letter-spacing: 2px;
-}
+    </div>
+  </section>
 
-.hero p {
-  margin-top: 10px;
-  font-size: 18px;
-  font-weight: 300;
-}
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>
+      Nish Clothing is a modern fashion brand focused on simplicity, comfort, and self-expression.
+      We believe fashion is not just clothing — it's identity.
+    </p>
+  </section>
 
-.btn {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 12px 30px;
-  background: white;
-  color: black;
-  text-decoration: none;
-  font-size: 14px;
-  transition: 0.3s;
-}
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>Email: support@nishclothing.com</p>
+    <p>Instagram: @nishclothing</p>
+  </section>
 
-.btn:hover {
-  background: black;
-  color: white;
-}
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Nish Clothing. All rights reserved.</p>
+  </footer>
 
-/* PRODUCTS */
-.products {
-  padding: 80px 60px;
-  text-align: center;
-}
-
-.products h2 {
-  font-size: 32px;
-  margin-bottom: 40px;
-  font-weight: 300;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-}
-
-.card {
-  background: white;
-  border: 1px solid #eee;
-  overflow: hidden;
-  transition: 0.3s;
-}
-
-.card img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-  transition: 0.3s;
-}
-
-.card h3 {
-  margin: 15px 0 5px;
-  font-weight: 400;
-}
-
-.card p {
-  margin-bottom: 15px;
-  color: #555;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-/* ABOUT */
-.about {
-  padding: 80px 60px;
-  text-align: center;
-  background: #fafafa;
-}
-
-.about h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-  font-weight: 300;
-}
-
-.about p {
-  max-width: 600px;
-  margin: auto;
-  color: #555;
-}
-
-/* CONTACT */
-.contact {
-  padding: 60px;
-  text-align: center;
-}
-
-.contact h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-  font-weight: 300;
-}
-
-/* FOOTER */
-footer {
-  background: #111;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  font-size: 13px;
-}
+</body>
+</html>
