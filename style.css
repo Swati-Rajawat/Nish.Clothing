@@ -5,26 +5,37 @@
   font-family: Arial, sans-serif;
 }
 
-/* HEADER */
+body {
+  background: #fff;
+  color: #111;
+}
+
+/* NAVBAR */
 header {
   display: flex;
   justify-content: space-between;
-  padding: 15px 40px;
-  background: black;
-  color: white;
-  align-items: center;
+  padding: 20px 60px;
+  background: white;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
 }
 
-header nav a {
-  color: white;
+.logo {
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+nav a {
   margin-left: 20px;
   text-decoration: none;
+  color: #111;
 }
 
 /* HERO */
 .hero {
   height: 90vh;
-  background: url('https://images.unsplash.com/photo-1520975916090-3105956dac38') center/cover;
+  background: url("https://images.unsplash.com/photo-1520975916090-3105956dac38") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,21 +57,14 @@ header nav a {
 }
 
 /* PRODUCTS */
-.products {
-  padding: 60px;
-  text-align: center;
-}
-
 .product-grid {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
 }
 
 .card {
-  width: 250px;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   padding: 10px;
 }
 
@@ -70,7 +74,7 @@ header nav a {
   object-fit: cover;
 }
 
-/* ABOUT & CONTACT */
+/* SECTIONS */
 .about, .contact {
   padding: 60px;
   text-align: center;
@@ -78,8 +82,8 @@ header nav a {
 
 /* FOOTER */
 footer {
-  background: black;
+  background: #111;
   color: white;
   text-align: center;
-  padding: 15px;
+  padding: 20px;
 }
