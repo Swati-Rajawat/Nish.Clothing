@@ -1,579 +1,186 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NishClothing — Luxury Streetwear</title>
-  <meta name="description" content="NishClothing — Curated luxury streetwear with an editorial edge. Obsessively crafted, effortlessly worn." />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
-</head>
-<body>
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
 
-<!-- CURSOR -->
-<div class="cursor"></div>
-<div class="cursor-ring"></div>
+body {
+  background: #ffffff;
+  color: #111;
+  line-height: 1.6;
+}
 
-<!-- TOAST -->
-<div class="toast" id="toast">
-  <span class="toast-icon">✦</span>
-  <span class="toast-text"></span>
-</div>
+/* NAVBAR */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  position: sticky;
+  top: 0;
+  background: white;
+  border-bottom: 1px solid #eee;
+  z-index: 1000;
+}
 
-<!-- CART OVERLAY -->
-<div class="cart-overlay" id="cart-overlay">
-  <div class="cart-sidebar">
-    <div class="cart-header">
-      <div class="cart-title">Your Cart</div>
-      <button class="cart-close" id="cart-close">✕</button>
-    </div>
-    <div class="cart-items" id="cart-items"></div>
-    <div class="cart-footer">
-      <div class="cart-total-row">
-        <span class="cart-total-label">Total</span>
-        <span class="cart-total-price" id="cart-total">₹0</span>
-      </div>
-      <a href="#" class="btn-primary" style="display:block;text-align:center;margin-bottom:12px;" data-checkout>Proceed to Checkout</a>
-      <a href="#" class="btn-outline" style="display:block;text-align:center;" data-page="products">Continue Shopping</a>
-    </div>
-  </div>
-</div>
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
 
-<!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-  <a href="#" class="nav-logo" data-page="home">Nish<span>.</span></a>
-  <ul class="nav-links">
-    <li><a href="#" data-page="home">Home</a></li>
-    <li><a href="#" data-page="products">Shop</a></li>
-    <li><a href="#" data-page="blogs">Journal</a></li>
-    <li><a href="#" data-page="signin">Account</a></li>
-  </ul>
-  <div class="nav-actions">
-    <button class="nav-icon" data-open-cart style="position:relative;">
-      🛍️
-      <span class="cart-count" style="display:none;">0</span>
-    </button>
-    <a href="#" class="nav-cta" data-page="signin">Sign In</a>
-    <button class="hamburger">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #111;
+  font-size: 14px;
+  transition: 0.3s;
+}
 
-<!-- ==================== HOME PAGE ==================== -->
-<div class="page" id="home">
+nav a:hover {
+  color: #777;
+}
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-left">
-      <div class="hero-eyebrow">New Collection 2025</div>
-      <h1 class="hero-title">
-        Wear the
-        <em>Dark</em>
-        Season
-      </h1>
-      <p class="hero-subtitle">
-        Editorial streetwear for those who move in silence. Every piece is a statement. Every detail, deliberate.
-      </p>
-      <div class="hero-actions">
-        <a href="#" class="btn-primary" data-page="products">Shop Collection</a>
-        <a href="#" class="btn-outline" data-page="blogs">Read the Journal</a>
-      </div>
-      <div class="hero-scroll-indicator">
-        <div class="scroll-line"></div>
-        Scroll
-      </div>
-    </div>
-    <div class="hero-right">
-      <div class="hero-image-container">
-        <div class="hero-model-placeholder">✦</div>
-        <div class="hero-badge">
-          <div class="hero-badge-inner">New<br/>Season<br/>2025</div>
-        </div>
-      </div>
-    </div>
-  </section>
+/* HERO */
+.hero {
+  height: 90vh;
+  background: url("https://images.unsplash.com/photo-1520975916090-3105956dac38") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
 
-  <!-- MARQUEE -->
-  <div class="marquee-section">
-    <div class="marquee-track">
-      <span class="marquee-item">Free Shipping Over ₹3000</span>
-      <span class="marquee-item">Obsidian Collection Now Live</span>
-      <span class="marquee-item">Handcrafted in India</span>
-      <span class="marquee-item">Sustainable Materials</span>
-      <span class="marquee-item">Limited Edition Drops</span>
-      <span class="marquee-item">Free Shipping Over ₹3000</span>
-      <span class="marquee-item">Obsidian Collection Now Live</span>
-      <span class="marquee-item">Handcrafted in India</span>
-      <span class="marquee-item">Sustainable Materials</span>
-      <span class="marquee-item">Limited Edition Drops</span>
-    </div>
-  </div>
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+}
 
-  <!-- FEATURED PRODUCTS -->
-  <section class="featured">
-    <div class="featured-header">
-      <div>
-        <div class="section-label">Curated Selection</div>
-        <h2 class="section-title">Featured <em>Pieces</em></h2>
-      </div>
-      <a href="#" class="btn-outline" data-page="products">View All →</a>
-    </div>
-    <div class="products-grid">
-      <!-- Card 1: Featured large -->
-      <div class="product-card">
-        <div class="product-img">
-          <div class="product-img-placeholder">🧥</div>
-          <div class="product-overlay">
-            <button class="product-quick-add" onclick="addToCart(1)">Quick Add to Cart</button>
-          </div>
-          <div class="product-tag tag-new">New</div>
-        </div>
-        <div class="product-info">
-          <div class="product-name">Obsidian Overcoat</div>
-          <div class="product-price">₹4,999</div>
-        </div>
-      </div>
-      <!-- Card 2 -->
-      <div class="product-card">
-        <div class="product-img">
-          <div class="product-img-placeholder">👖</div>
-          <div class="product-overlay">
-            <button class="product-quick-add" onclick="addToCart(2)">Quick Add to Cart</button>
-          </div>
-          <div class="product-tag tag-sale">Sale</div>
-        </div>
-        <div class="product-info">
-          <div class="product-name">Raw Denim Selvedge</div>
-          <div class="product-price"><span class="original">₹2,999</span>₹2,199</div>
-        </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="product-card">
-        <div class="product-img">
-          <div class="product-img-placeholder">👔</div>
-          <div class="product-overlay">
-            <button class="product-quick-add" onclick="addToCart(3)">Quick Add to Cart</button>
-          </div>
-          <div class="product-tag tag-limited">Limited</div>
-        </div>
-        <div class="product-info">
-          <div class="product-name">Silk Revere Shirt</div>
-          <div class="product-price">₹1,899</div>
-        </div>
-      </div>
-      <!-- Card 4 -->
-      <div class="product-card">
-        <div class="product-img">
-          <div class="product-img-placeholder">🧣</div>
-          <div class="product-overlay">
-            <button class="product-quick-add" onclick="addToCart(4)">Quick Add to Cart</button>
-          </div>
-          <div class="product-tag tag-new">New</div>
-        </div>
-        <div class="product-info">
-          <div class="product-name">Merino Turtleneck</div>
-          <div class="product-price">₹2,499</div>
-        </div>
-      </div>
-    </div>
-  </section>
+.hero-text {
+  position: relative;
+  z-index: 2;
+}
 
-  <!-- CATEGORIES -->
-  <section class="categories">
-    <div class="section-label">Browse</div>
-    <h2 class="section-title">Shop by <em>Category</em></h2>
-    <div class="categories-grid">
-      <div class="category-card" data-page="products" style="cursor:none;">
-        <div class="category-bg">🧥</div>
-        <div class="cat-overlay"></div>
-        <div class="category-content">
-          <span class="category-name">Outerwear</span>
-          <span class="category-count">12 pieces</span>
-        </div>
-        <div class="category-arrow">→</div>
-      </div>
-      <div class="category-card" data-page="products" style="cursor:none;">
-        <div class="category-bg">👔</div>
-        <div class="cat-overlay"></div>
-        <div class="category-content">
-          <span class="category-name">Tops</span>
-          <span class="category-count">24 pieces</span>
-        </div>
-        <div class="category-arrow">→</div>
-      </div>
-      <div class="category-card" data-page="products" style="cursor:none;">
-        <div class="category-bg">👖</div>
-        <div class="cat-overlay"></div>
-        <div class="category-content">
-          <span class="category-name">Bottoms</span>
-          <span class="category-count">18 pieces</span>
-        </div>
-        <div class="category-arrow">→</div>
-      </div>
-      <div class="category-card" data-page="products" style="cursor:none;">
-        <div class="category-bg">👟</div>
-        <div class="cat-overlay"></div>
-        <div class="category-content">
-          <span class="category-name">Accessories</span>
-          <span class="category-count">31 pieces</span>
-        </div>
-        <div class="category-arrow">→</div>
-      </div>
-    </div>
-  </section>
+.hero h1 {
+  font-size: 60px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
 
-  <!-- TESTIMONIALS -->
-  <section class="testimonials">
-    <div class="section-label">Community</div>
-    <h2 class="section-title">What They <em>Say</em></h2>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"The Obsidian Overcoat is the best piece of clothing I've ever bought. The quality is insane and people stop me on the street constantly."</p>
-        <div class="testimonial-author">Arjun M. — Mumbai</div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"Finally a brand that understands luxury doesn't mean flashy. NishClothing nails the understated aesthetic perfectly."</p>
-        <div class="testimonial-author">Priya S. — Delhi</div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"The packaging alone is an experience. These guys have thought of everything. My third order and each time better than the last."</p>
-        <div class="testimonial-author">Kabir R. — Bangalore</div>
-      </div>
-    </div>
-  </section>
+.hero p {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 300;
+}
 
-</div>
-<!-- END HOME -->
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 30px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
 
-<!-- ==================== PRODUCTS PAGE ==================== -->
-<div class="page" id="products">
-  <div class="products-page">
-    <div class="products-header">
-      <div class="products-title-row">
-        <div>
-          <div class="section-label">The Collection</div>
-          <h1 class="section-title">All <em>Products</em></h1>
-        </div>
-        <select class="sort-select" id="sort-select">
-          <option>Sort: Featured</option>
-          <option>Price: Low to High</option>
-          <option>Price: High to Low</option>
-          <option>Newest First</option>
-        </select>
-      </div>
-    </div>
-    <div class="filter-bar">
-      <button class="filter-btn active" data-filter="all">All Pieces</button>
-      <button class="filter-btn" data-filter="outerwear">Outerwear</button>
-      <button class="filter-btn" data-filter="tops">Tops</button>
-      <button class="filter-btn" data-filter="bottoms">Bottoms</button>
-    </div>
-    <div class="all-products-grid" id="all-products-grid"></div>
-  </div>
-</div>
-<!-- END PRODUCTS -->
+.btn:hover {
+  background: black;
+  color: white;
+}
 
-<!-- ==================== BLOGS PAGE ==================== -->
-<div class="page" id="blogs">
-  <div class="blogs-page">
-    <div class="blogs-hero">
-      <div class="section-label">The Journal</div>
-      <h1 class="blogs-title">Style. Culture. <em>Obsession.</em></h1>
-      <p class="section-subtitle">Stories behind the seams, thoughts on modern dressing, and the people who wear it right.</p>
-    </div>
-    <div class="blogs-grid" style="margin-top:2px;">
-      <!-- Featured Blog -->
-      <div class="blog-card featured">
-        <div class="blog-img" style="font-size:5rem;">✦</div>
-        <div class="blog-content">
-          <div class="blog-category">Editorial</div>
-          <h2 class="blog-title">The Art of the Understated: Why Less is Always More in 2025</h2>
-          <p class="blog-excerpt">In a world drowning in logos and noise, the most radical fashion statement you can make is restraint. We explore the philosophy behind quiet luxury and why it's here to stay.</p>
-          <div class="blog-meta">
-            <span>June 2025 · 8 min read</span>
-            <a href="#" class="read-more">Read More →</a>
-          </div>
-        </div>
-      </div>
-      <!-- Blog 2 -->
-      <div class="blog-card">
-        <div class="blog-img">🧵</div>
-        <div class="blog-content">
-          <div class="blog-category">Craftsmanship</div>
-          <h2 class="blog-title">Inside the Atelier: How Every Nish Piece is Born</h2>
-          <p class="blog-excerpt">From first sketch to finished garment, a look inside our production process.</p>
-          <div class="blog-meta">
-            <span>May 2025 · 5 min</span>
-            <a href="#" class="read-more">Read →</a>
-          </div>
-        </div>
-      </div>
-      <!-- Blog 3 -->
-      <div class="blog-card">
-        <div class="blog-img">🌿</div>
-        <div class="blog-content">
-          <div class="blog-category">Sustainability</div>
-          <h2 class="blog-title">Fabric Forward: Our Commitment to Responsible Materials</h2>
-          <p class="blog-excerpt">Every thread has a story. Here's ours — and why sustainable fashion is non-negotiable.</p>
-          <div class="blog-meta">
-            <span>April 2025 · 6 min</span>
-            <a href="#" class="read-more">Read →</a>
-          </div>
-        </div>
-      </div>
-      <!-- Blog 4 -->
-      <div class="blog-card">
-        <div class="blog-img">📐</div>
-        <div class="blog-content">
-          <div class="blog-category">Style Guide</div>
-          <h2 class="blog-title">The Capsule Wardrobe: 10 Pieces, Infinite Combinations</h2>
-          <p class="blog-excerpt">Build a wardrobe that lasts a lifetime. Our guide to the ten essential pieces every wardrobe needs.</p>
-          <div class="blog-meta">
-            <span>March 2025 · 4 min</span>
-            <a href="#" class="read-more">Read →</a>
-          </div>
-        </div>
-      </div>
-      <!-- Blog 5 -->
-      <div class="blog-card">
-        <div class="blog-img">🏙️</div>
-        <div class="blog-content">
-          <div class="blog-category">Culture</div>
-          <h2 class="blog-title">Street to Studio: The New Language of Indian Fashion</h2>
-          <p class="blog-excerpt">How a new generation of Indian designers is rewriting the global fashion conversation.</p>
-          <div class="blog-meta">
-            <span>Feb 2025 · 7 min</span>
-            <a href="#" class="read-more">Read →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- END BLOGS -->
+/* PRODUCTS */
+.products {
+  padding: 80px 60px;
+  text-align: center;
+}
 
-<!-- ==================== SIGN IN PAGE ==================== -->
-<div class="page" id="signin">
-  <div class="auth-page">
-    <div class="auth-left">
-      <div class="auth-brand">
-        <div class="auth-brand-logo">Nish<span>.</span></div>
-        <div class="auth-brand-tagline">"Wear the silence."</div>
-      </div>
-    </div>
-    <div class="auth-right">
-      <div class="auth-form-container">
-        <div class="auth-tabs">
-          <button class="auth-tab active" data-tab="login">Sign In</button>
-          <button class="auth-tab" data-tab="register">Create Account</button>
-        </div>
-        <!-- Login Form -->
-        <div class="auth-form-panel" id="login-form">
-          <div class="form-group">
-            <label class="form-label">Email Address</label>
-            <input type="email" class="form-input" placeholder="hello@email.com" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Password</label>
-            <input type="password" class="form-input" placeholder="••••••••" />
-          </div>
-          <div style="text-align:right;margin-bottom:24px;">
-            <a href="#" style="font-family:var(--font-mono);font-size:0.62rem;color:var(--text-muted);text-decoration:none;letter-spacing:0.1em;">Forgot password?</a>
-          </div>
-          <button class="btn-submit" onclick="showToast('Welcome back to Nish. ✦')">Sign In</button>
-          <div class="form-divider"><span>or</span></div>
-          <button class="btn-google">
-            <span>G</span> Continue with Google
-          </button>
-          <p class="form-footer">
-            Don't have an account? <a href="#" onclick="document.querySelectorAll('.auth-tab')[1].click()">Create one →</a>
-          </p>
-        </div>
-        <!-- Register Form -->
-        <div class="auth-form-panel" id="register-form" style="display:none;">
-          <div class="form-group">
-            <label class="form-label">Full Name</label>
-            <input type="text" class="form-input" placeholder="Your name" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Email Address</label>
-            <input type="email" class="form-input" placeholder="hello@email.com" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Password</label>
-            <input type="password" class="form-input" placeholder="Min. 8 characters" />
-          </div>
-          <button class="btn-submit" onclick="showToast('Account created! Welcome to Nish. ✦')">Create Account</button>
-          <div class="form-divider"><span>or</span></div>
-          <button class="btn-google">
-            <span>G</span> Sign up with Google
-          </button>
-          <p class="form-footer">
-            Already have an account? <a href="#" onclick="document.querySelectorAll('.auth-tab')[0].click()">Sign in →</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- END SIGN IN -->
+.products h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
 
-<!-- ==================== CHECKOUT PAGE ==================== -->
-<div class="page" id="checkout">
-  <div class="checkout-page">
-    <div style="padding:40px 80px 0; border-bottom:1px solid var(--border-light); margin-bottom:0;">
-      <div class="section-label">Secure Checkout</div>
-      <h1 class="section-title">Complete Your <em>Order</em></h1>
-    </div>
-    <div class="checkout-grid">
-      <div class="checkout-form-section" style="padding-top:48px;">
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
 
-        <!-- Order Success -->
-        <div id="order-success" style="display:none;text-align:center;padding:80px 40px;">
-          <div style="font-size:4rem;margin-bottom:24px;">✦</div>
-          <h2 style="font-family:var(--font-display);font-size:2.5rem;color:var(--gold);margin-bottom:16px;">Order Confirmed!</h2>
-          <p style="color:rgba(245,240,232,0.6);font-size:1.1rem;margin-bottom:32px;">Thank you for shopping with NishClothing. You'll receive a confirmation email shortly.</p>
-          <a href="#" class="btn-primary" data-page="home">Back to Home</a>
-        </div>
+.card {
+  background: white;
+  border: 1px solid #eee;
+  overflow: hidden;
+  transition: 0.3s;
+}
 
-        <div id="checkout-form-content">
-          <!-- Contact -->
-          <div class="checkout-step">
-            <div class="step-number">Step 01</div>
-            <div class="step-title">Contact & Shipping</div>
-            <div class="form-group">
-              <label class="form-label">Full Name *</label>
-              <input type="text" id="checkout-name" class="form-input" placeholder="Nish Kumar" />
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Email *</label>
-                <input type="email" id="checkout-email" class="form-input" placeholder="you@email.com" />
-              </div>
-              <div class="form-group">
-                <label class="form-label">Phone</label>
-                <input type="tel" class="form-input" placeholder="+91 98765 43210" />
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Address *</label>
-              <input type="text" id="checkout-address" class="form-input" placeholder="Street address, apartment, etc." />
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">City</label>
-                <input type="text" class="form-input" placeholder="Mumbai" />
-              </div>
-              <div class="form-group">
-                <label class="form-label">PIN Code</label>
-                <input type="text" class="form-input" placeholder="400001" />
-              </div>
-            </div>
-          </div>
+.card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: 0.3s;
+}
 
-          <!-- Payment -->
-          <div class="checkout-step">
-            <div class="step-number">Step 02</div>
-            <div class="step-title">Payment</div>
-            <div class="payment-methods">
-              <button class="payment-method selected">💳 Card</button>
-              <button class="payment-method">📱 UPI</button>
-              <button class="payment-method">🏦 Net Banking</button>
-              <button class="payment-method">💵 COD</button>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Card Number</label>
-              <input type="text" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19" />
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Expiry</label>
-                <input type="text" class="form-input" placeholder="MM / YY" />
-              </div>
-              <div class="form-group">
-                <label class="form-label">CVV</label>
-                <input type="text" class="form-input" placeholder="•••" maxlength="4" />
-              </div>
-            </div>
-            <button class="btn-submit" style="margin-top:16px;" onclick="placeOrder()">Place Order ✦</button>
-          </div>
-        </div>
-      </div>
+.card h3 {
+  margin: 15px 0 5px;
+  font-weight: 400;
+}
 
-      <!-- Summary -->
-      <div class="checkout-summary">
-        <div class="section-label" style="margin-bottom:24px;">Order Summary</div>
-        <div class="promo-input-row">
-          <input type="text" class="promo-input" placeholder="PROMO CODE" />
-          <button class="promo-btn" onclick="showToast('Code applied! 10% off ✦')">Apply</button>
-        </div>
-        <div id="checkout-summary-items"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- END CHECKOUT -->
+.card p {
+  margin-bottom: 15px;
+  color: #555;
+}
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand-name">Nish<span>.</span></div>
-      <p class="footer-tagline">"Wear the silence."</p>
-      <div class="footer-social">
-        <a href="#" class="social-link">𝕏</a>
-        <a href="#" class="social-link">in</a>
-        <a href="#" class="social-link">ig</a>
-        <a href="#" class="social-link">yt</a>
-      </div>
-    </div>
-    <div>
-      <div class="footer-col-title">Shop</div>
-      <ul class="footer-links">
-        <li><a href="#" data-page="products">New Arrivals</a></li>
-        <li><a href="#" data-page="products">Outerwear</a></li>
-        <li><a href="#" data-page="products">Tops</a></li>
-        <li><a href="#" data-page="products">Bottoms</a></li>
-        <li><a href="#" data-page="products">Accessories</a></li>
-        <li><a href="#" data-page="products">Sale</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Company</div>
-      <ul class="footer-links">
-        <li><a href="#">Our Story</a></li>
-        <li><a href="#" data-page="blogs">Journal</a></li>
-        <li><a href="#">Sustainability</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Press</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Support</div>
-      <ul class="footer-links">
-        <li><a href="#">Shipping & Returns</a></li>
-        <li><a href="#">Size Guide</a></li>
-        <li><a href="#">FAQs</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Track Order</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-copyright">© 2025 NishClothing. All rights reserved.</div>
-    <div class="footer-payments">
-      <span class="payment-badge">VISA</span>
-      <span class="payment-badge">MC</span>
-      <span class="payment-badge">UPI</span>
-      <span class="payment-badge">AMEX</span>
-    </div>
-  </div>
-</footer>
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
 
-<script src="js/main.js"></script>
-</body>
-</html>
+/* ABOUT */
+.about {
+  padding: 80px 60px;
+  text-align: center;
+  background: #fafafa;
+}
+
+.about h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.about p {
+  max-width: 600px;
+  margin: auto;
+  color: #555;
+}
+
+/* CONTACT */
+.contact {
+  padding: 60px;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+/* FOOTER */
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+}
