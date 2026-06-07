@@ -1,8 +1,129 @@
-.blog {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #fff;
+  color: #111;
+}
+
+/* NAVBAR */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: white;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #111;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #555;
+}
+
+/* HERO */
+.hero {
+  height: 90vh;
+  background: url("https://images.unsplash.com/photo-1520975916090?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  font-size: 18px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background: #eee;
+}
+
+/* SECTIONS */
+.products, .blog, .about, .contact {
   padding: 60px;
   text-align: center;
 }
 
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+/* PRODUCT GRID */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* PRODUCT CARD */
+.card {
+  border: 1px solid #eee;
+  padding: 10px;
+  transition: 0.3s ease;
+  background: #fff;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.card p {
+  margin-top: 5px;
+  color: #444;
+}
+
+/* BLOG */
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -13,12 +134,20 @@
 .blog-card {
   border: 1px solid #eee;
   padding: 20px;
-  transition: 0.3s ease;
   background: #fff;
-  border-radius: 10px;
+  transition: 0.3s;
 }
 
 .blog-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+/* FOOTER */
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
 }
